@@ -17,7 +17,7 @@ export default function Footer() {
     const pathname = usePathname();
 
     const handleChange = (e: any) => {
-        const key = Number(e.currentKey.replaceAll('$.', ''));
+        const key: number = Number(e.currentKey.replaceAll('$.', ''));
         const value = LocaleConfig.locales[key].value || LocaleConfig.defaultLocale;
         router.push(pathname, { locale: value });
         setSelectedKey(value);
@@ -48,7 +48,7 @@ export default function Footer() {
                     onSelectionChange={handleChange}
                 >
                     {LocaleConfig.locales.map((lang) => (
-                        <DropdownItem value={lang.value}>
+                        <DropdownItem key={lang.value} value={lang.value}>
                             {lang.label}
                         </DropdownItem>
                     ))}
