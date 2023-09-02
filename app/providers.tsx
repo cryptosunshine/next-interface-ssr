@@ -7,7 +7,7 @@ import { ThemeProviderProps } from "next-themes/dist/types";
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store';
+import { store, persistor } from '../store';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
@@ -16,6 +16,7 @@ import { metaMaskWallet, injectedWallet } from '@rainbow-me/rainbowkit/wallets';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { polygon, polygonMumbai } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+
 
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -53,7 +54,10 @@ export interface ProvidersProps {
 
 export function Providers({ children, themeProps }: ProvidersProps) {
 
+
+
 	const queryClient = new QueryClient()
+
 
 	return (
 		<NextUIProvider>
@@ -63,7 +67,8 @@ export function Providers({ children, themeProps }: ProvidersProps) {
 						<WagmiConfig config={config}>
 							<RainbowKitProvider modalSize="compact" chains={chains} showRecentTransactions={true} appInfo={appInfo}>
 								<QueryClientProvider client={queryClient}>
-									{children}
+
+										{children}
 								</QueryClientProvider>
 							</RainbowKitProvider>
 						</WagmiConfig>

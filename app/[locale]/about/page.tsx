@@ -2,7 +2,7 @@
 import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setUser } from '../store/user/reducer';
+import { setUser } from '../../../store/user/reducer';
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 

@@ -17,7 +17,8 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 
 import { siteConfig } from "@/config/site";
-import NextLink from "next/link";
+
+import NextIntl from "next-intl/link";
 import clsx from "clsx";
 
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -57,15 +58,15 @@ export const Navbar = () => {
 		<NextUINavbar maxWidth="xl" position="sticky">
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
-					<NextLink className="flex justify-start items-center gap-1" href="/">
+					<NextIntl className="flex justify-start items-center gap-1" href="/">
 						<Logo />
 						<p className="font-bold text-inherit">ACME</p>
-					</NextLink>
+					</NextIntl>
 				</NavbarBrand>
 				<ul className="hidden lg:flex gap-4 justify-start ml-2">
 					{siteConfig.navItems.map((item) => (
 						<NavbarItem key={item.href}>
-							<NextLink
+							<NextIntl
 								className={clsx(
 									linkStyles({ color: "foreground" }),
 									"data-[active=true]:text-primary data-[active=true]:font-medium"
@@ -74,7 +75,7 @@ export const Navbar = () => {
 								href={item.href}
 							>
 								{item.label}
-							</NextLink>
+							</NextIntl>
 						</NavbarItem>
 					))}
 				</ul>
