@@ -1,5 +1,7 @@
 import { title } from "@/components/primitives";
 
+export const runtime = 'edge';
+
 export default function PricingPage() {
 	return (
 		<div>

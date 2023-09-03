@@ -3,6 +3,8 @@ import { title } from "@/components/primitives";
 
 import { useSelector } from 'react-redux';
 
+export const runtime = 'edge';
+
 function BlogPage() {
 	const user = useSelector((state: any) => state.user);
 	return (

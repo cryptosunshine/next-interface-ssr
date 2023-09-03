@@ -17,10 +17,8 @@ export default function Footer() {
     const pathname = usePathname();
 
     const handleChange = (e: any) => {
-        const key: number = Number(e.currentKey.replaceAll('$.', ''));
-        const value = LocaleConfig.locales[key].value || LocaleConfig.defaultLocale;
-        router.push(pathname, { locale: value });
-        setSelectedKey(value);
+        router.push(pathname, { locale: e.anchorKey });
+        setSelectedKey(e.anchorKey);
 
     };
 

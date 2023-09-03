@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { NextIntlClientProvider } from 'next-intl';
 import Footer from "@/components/footer"
 
+
 export function generateStaticParams() {
 	return [{ locale: 'en' }, { locale: 'zh' }];
 }

@@ -6,6 +6,8 @@ import { setUser } from '../../../store/user/reducer';
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 
+export const runtime = 'edge';
+
 function HomePage() {
   const userNameRef = useRef<HTMLInputElement>(null);
   const userEmailRef = useRef<HTMLInputElement>(null);
@@ -27,4 +29,5 @@ function HomePage() {
   );
 
 }
+
 export default HomePage;

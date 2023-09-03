@@ -1,3 +1,4 @@
+"use client";
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -7,8 +8,8 @@ import {
 	NavbarItem,
 	NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-
+// import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Connect from "./connect";
 import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
@@ -33,6 +34,8 @@ import {
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
+
+
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -99,7 +102,8 @@ export const Navbar = () => {
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
-					<ConnectButton />
+					{/* <ConnectButton /> */}
+					<Connect />
 				</NavbarItem>
 			</NavbarContent>
 
@@ -121,8 +125,8 @@ export const Navbar = () => {
 									index === 2
 										? "primary"
 										: index === siteConfig.navMenuItems.length - 1
-										? "danger"
-										: "foreground"
+											? "danger"
+											: "foreground"
 								}
 								href="#"
 								size="lg"
