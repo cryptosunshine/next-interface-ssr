@@ -1,7 +1,14 @@
 
+### Use the NextUI
+
+https://nextui.org/docs/guide/introduction
+
 ### Use the next-intl
 
 https://next-intl-docs.vercel.app/
+
+### Use the Redux
+
 
 ### Install dependencies
 

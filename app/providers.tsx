@@ -46,26 +46,27 @@ export interface ProvidersProps {
 
 export function Providers({ children, themeProps }: ProvidersProps) {
 
-
-
 	const queryClient = new QueryClient()
-
 
 	return (
 		<NextUIProvider>
-			<Provider store={store}>
-				<PersistGate persistor={persistor}>
-					<NextThemesProvider {...themeProps}>
-						<QueryClientProvider client={queryClient}>
-							<WagmiConfig config={wagmiConfig}>
-								{children}
-								<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-							</WagmiConfig>
+			<WagmiConfig config={wagmiConfig}>
+				<Provider store={store}>
+					<PersistGate persistor={persistor}>
+						<NextThemesProvider {...themeProps}>
+							<QueryClientProvider client={queryClient}>
 
-						</QueryClientProvider>
-					</NextThemesProvider>
-				</PersistGate>
-			</Provider>
+								{children}
+
+
+
+							</QueryClientProvider>
+						</NextThemesProvider>
+					</PersistGate>
+				</Provider>
+			</WagmiConfig>
+
+			<Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
 		</NextUIProvider>
 	);
 }

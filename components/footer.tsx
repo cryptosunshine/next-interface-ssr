@@ -5,6 +5,7 @@ import { useRouter, usePathname } from 'next-intl/client';
 
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import { LocaleConfig } from "@/locale"
+import { ThemeSwitch } from "@/components/theme-switch";
 
 const regex = /^\/([a-zA-Z]+)/;
 
@@ -28,6 +29,7 @@ export default function Footer() {
     }, [selectedKey])
     return (
         <footer className="w-full flex items-center justify-center py-3">
+            <ThemeSwitch className="mr-5"/>
             <Dropdown>
                 <DropdownTrigger>
                     <Button

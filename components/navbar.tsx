@@ -10,7 +10,8 @@ import {
 } from "@nextui-org/navbar";
 // import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Connect from "./connect";
-import { Button } from "@nextui-org/button";
+import { Web3Button } from '@web3modal/react'
+
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
@@ -30,12 +31,17 @@ import {
 	HeartFilledIcon,
 	SearchIcon,
 } from "@/components/icons";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+
 
 import { Logo } from "@/components/icons";
+import { useEffect, useState } from "react";
+import { useLogin } from "@/hooks/login"
+
 
 export const Navbar = () => {
-
-
+	const { data: token } = useLogin('gm wagmi frens');
+	console.log(token)
 	const searchInput = (
 		<Input
 			aria-label="Search"
@@ -66,7 +72,8 @@ export const Navbar = () => {
 						<p className="font-bold text-inherit">ACME</p>
 					</NextIntl>
 				</NavbarBrand>
-				<ul className="hidden lg:flex gap-4 justify-start ml-2">
+				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+				{/* <ul className="hidden lg:flex gap-4 justify-start ml-2">
 					{siteConfig.navItems.map((item) => (
 						<NavbarItem key={item.href}>
 							<NextIntl
@@ -81,29 +88,44 @@ export const Navbar = () => {
 							</NextIntl>
 						</NavbarItem>
 					))}
-				</ul>
+				</ul> */}
 			</NavbarContent>
 
 			<NavbarContent
 				className="hidden sm:flex basis-1/5 sm:basis-full"
 				justify="end"
 			>
-				<NavbarItem className="hidden sm:flex gap-2">
-					<Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
-						<TwitterIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.discord} aria-label="Discord">
-						<DiscordIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.github} aria-label="Github">
-						<GithubIcon className="text-default-500" />
-					</Link>
-					<ThemeSwitch />
+
+				<NavbarItem>
+					<Dropdown>
+						<DropdownTrigger>
+							<Button variant="light">
+								Explore
+							</Button>
+						</DropdownTrigger>
+						<DropdownMenu aria-label="Static Actions">
+							<DropdownItem className="p-3" key="new">Collections</DropdownItem>
+							<DropdownItem className="p-3" key="copy">NFTs</DropdownItem>
+						</DropdownMenu>
+					</Dropdown>
 				</NavbarItem>
-				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+				<NavbarItem>
+					<Dropdown>
+						<DropdownTrigger>
+							<Button className="gradient-text"  variant="light">
+							Create
+							</Button>
+						</DropdownTrigger>
+						<DropdownMenu aria-label="Static Actions">
+							<DropdownItem className="p-3" key="new">NFT</DropdownItem>
+							<DropdownItem className="p-3" key="copy">Collections</DropdownItem>
+						</DropdownMenu>
+					</Dropdown>
+				</NavbarItem>
+
 				<NavbarItem className="hidden md:flex">
 					{/* <ConnectButton /> */}
-					<Connect />
+					<Web3Button />
 				</NavbarItem>
 			</NavbarContent>
 
@@ -121,13 +143,7 @@ export const Navbar = () => {
 					{siteConfig.navMenuItems.map((item, index) => (
 						<NavbarMenuItem key={`${item}-${index}`}>
 							<Link
-								color={
-									index === 2
-										? "primary"
-										: index === siteConfig.navMenuItems.length - 1
-											? "danger"
-											: "foreground"
-								}
+								color={"foreground"}
 								href="#"
 								size="lg"
 							>
